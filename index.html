@@ -10,6 +10,36 @@
         box-sizing: border-box;
     }
 
+    :root {
+        color-scheme: light dark;
+
+        --card-bg: #f5f1e9;
+        --card-border: #ddd6ca;
+        --card-shadow: rgba(71, 63, 52, 0.08);
+        --text-main: #3f3b36;
+        --text-dates: #8a8277;
+        --bar-track: #e2ddd3;
+        --bar-fill: #9aa88b;
+        --label-color: #958d82;
+        --stat-bg: #ebe6dd;
+        --stat-label: #91897d;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --card-bg: #2a2723;
+            --card-border: #3c372f;
+            --card-shadow: rgba(0, 0, 0, 0.28);
+            --text-main: #e8e2d6;
+            --text-dates: #a39a8b;
+            --bar-track: #3a352d;
+            --bar-fill: #a3b494;
+            --label-color: #8c8375;
+            --stat-bg: #34302a;
+            --stat-label: #a39a8b;
+        }
+    }
+
     html, body {
         margin: 0;
         padding: 0;
@@ -21,7 +51,7 @@
     body {
         font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI",
                      Helvetica, Arial, sans-serif;
-        color: #3f3b36;
+        color: var(--text-main);
         display: flex;
         justify-content: center;
         align-items: flex-start;
@@ -30,11 +60,12 @@
 
     .progress-card {
         width: min(760px, 100%);
-        background: #f5f1e9;
-        border: 1px solid #ddd6ca;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
         border-radius: 18px;
         padding: 22px 24px 20px;
-        box-shadow: 0 5px 18px rgba(71, 63, 52, 0.08);
+        box-shadow: 0 5px 18px var(--card-shadow);
+        transition: background 0.3s ease, border-color 0.3s ease;
     }
 
     .top {
@@ -54,7 +85,7 @@
     .dates {
         margin-top: 4px;
         font-size: 12px;
-        color: #8a8277;
+        color: var(--text-dates);
     }
 
     .percentage {
@@ -68,17 +99,18 @@
         width: 100%;
         height: 16px;
         padding: 2px;
-        background: #e2ddd3;
+        background: var(--bar-track);
         border-radius: 999px;
         overflow: hidden;
+        transition: background 0.3s ease;
     }
 
     .fill {
         height: 100%;
         width: 0%;
         border-radius: 999px;
-        background: #9aa88b;
-        transition: width 0.8s ease;
+        background: var(--bar-fill);
+        transition: width 0.8s ease, background 0.3s ease;
     }
 
     .labels {
@@ -86,7 +118,7 @@
         justify-content: space-between;
         margin-top: 7px;
         font-size: 11px;
-        color: #958d82;
+        color: var(--label-color);
     }
 
     .stats {
@@ -97,14 +129,15 @@
     }
 
     .stat {
-        background: #ebe6dd;
+        background: var(--stat-bg);
         border-radius: 12px;
         padding: 10px 12px;
+        transition: background 0.3s ease;
     }
 
     .stat-label {
         font-size: 10px;
-        color: #91897d;
+        color: var(--stat-label);
         text-transform: uppercase;
         letter-spacing: 0.7px;
         margin-bottom: 3px;
